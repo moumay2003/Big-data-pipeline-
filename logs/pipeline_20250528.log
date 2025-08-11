@@ -1,0 +1,216 @@
+2025-05-28 01:00:05,365 - __main__ - INFO - [PIPELINE] Demarrage du Pipeline HR Analytics Gepec 2.0
+2025-05-28 01:00:05,366 - __main__ - INFO - [INFO] Flux: Generation -> Kafka -> S3 -> Spark -> Predictions
+2025-05-28 01:00:05,366 - __main__ - INFO - [CHECK] Verification des modeles pre-entraines...
+2025-05-28 01:00:05,367 - __main__ - INFO - [SUCCESS] Tous les modeles pre-entraines sont disponibles
+2025-05-28 01:00:05,367 - __main__ - INFO - ============================================================
+2025-05-28 01:00:05,367 - __main__ - INFO - [STEP 1] Generation de donnees RH synthetiques
+2025-05-28 01:00:05,368 - __main__ - INFO - ============================================================
+2025-05-28 01:00:05,972 - __main__ - INFO - [SUCCESS] 50 employes synthetiques generes
+2025-05-28 01:00:05,973 - __main__ - INFO - [DATA] Colonnes: ['Employe_ID', 'Prenom', 'Nom', 'Genre', 'Age', 'Ville', 'Niveau_Etudes', 'Etablissement_Formation', 'Departement', 'Poste', 'Niveau_Seniorite', 'Annees_Experience_Totale', 'Annees_Experience_Entreprise', 'Date_Embauche', 'Salaire_Annuel_MAD', 'Competence_Principale', 'Niveau_Competence_Principale', 'Score_Performance_N-1', 'Satisfaction_Travail', 'Potentiel_Promotion', 'Risque_Depart', 'Statut_Teletravail', 'Role_Futur_Souhaite', 'Date_Estimee_Retraite', 'Date_Generation']
+2025-05-28 01:00:05,973 - __main__ - INFO - ============================================================
+2025-05-28 01:00:05,973 - __main__ - INFO - [STEP 2] Envoi des donnees vers Kafka
+2025-05-28 01:00:05,974 - __main__ - INFO - ============================================================
+2025-05-28 01:00:06,187 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-28 01:00:06,188 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-05-28 01:00:06,189 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-28 01:00:06,354 - kafka.conn - INFO - Broker version identified as 2.6.0
+2025-05-28 01:00:06,355 - kafka.conn - INFO - Set configuration api_version=(2, 6, 0) to skip auto check_version requests on startup
+2025-05-28 01:00:06,583 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-28 01:00:06,586 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-28 01:00:06,586 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-28 01:00:06,869 - __main__ - INFO - [SUCCESS] Donnees envoyees avec succes vers Kafka
+2025-05-28 01:00:08,884 - __main__ - INFO - ============================================================
+2025-05-28 01:00:08,885 - __main__ - INFO - [STEP 3] Chargement vers S3 Data Lake
+2025-05-28 01:00:08,885 - __main__ - INFO - ============================================================
+2025-05-28 01:00:12,922 - __main__ - INFO - [SUCCESS] Donnees uploadees vers S3 avec l'ID: {'csv': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_010011.csv', 'parquet': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_010011.parquet', 'metadata': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_010011_metadata.json'}
+2025-05-28 01:00:12,922 - __main__ - INFO - ============================================================
+2025-05-28 01:00:12,923 - __main__ - INFO - [STEP 4] Traitement Spark et Predictions
+2025-05-28 01:00:12,924 - __main__ - INFO - ============================================================
+2025-05-28 01:00:14,346 - src.spark_processor - INFO - [SPARK] Initialisation de Spark...
+2025-05-28 01:00:21,930 - src.spark_processor - INFO - [SUCCESS] Spark initialise - Version: 3.4.4
+2025-05-28 01:00:22,958 - src.spark_processor - INFO - [MODEL] Modele de salaire charge
+2025-05-28 01:00:23,186 - src.spark_processor - INFO - [MODEL] Modele de turnover charge
+2025-05-28 01:00:23,189 - src.spark_processor - INFO - [ENCODER] Encodeurs charges
+2025-05-28 01:00:23,189 - __main__ - INFO - [PROCESSING] Traitement des donnees avec Spark...
+2025-05-28 01:00:23,189 - src.spark_processor - INFO - Démarrage du traitement complet...
+2025-05-28 01:00:23,190 - src.spark_processor - INFO - Utilisation de Spark pour le traitement
+2025-05-28 01:00:31,361 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:00:31,361 - src.spark_processor - INFO - Application des transformations...
+2025-05-28 01:00:31,776 - src.spark_processor - INFO - Transformations appliquées
+2025-05-28 01:00:31,777 - src.spark_processor - INFO - Prédiction des salaires...
+2025-05-28 01:00:33,137 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:00:34,425 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:00:35,688 - src.spark_processor - INFO - Salaires prédits pour 50 employés
+2025-05-28 01:00:35,689 - src.spark_processor - INFO - Prédiction du risque de départ...
+2025-05-28 01:00:36,879 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:00:38,226 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:00:39,569 - src.spark_processor - INFO - Risques de départ prédits pour 50 employés
+2025-05-28 01:00:39,570 - src.spark_processor - INFO - Calcul des métriques analytics...
+2025-05-28 01:00:55,168 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:00:55,168 - src.spark_processor - INFO - Résumé du traitement:
+2025-05-28 01:00:55,168 - src.spark_processor - INFO -    - Employés traités: 50
+2025-05-28 01:00:55,169 - src.spark_processor - INFO -    - Salaire moyen prédit: 3200961 MAD
+2025-05-28 01:00:55,200 - src.spark_processor - INFO -    - Employés à risque de départ: 10
+2025-05-28 01:00:55,211 - src.spark_processor - INFO - Résultats sauvegardés: spark_predictions_20250528_010055.csv
+2025-05-28 01:00:55,211 - __main__ - INFO - ============================================================
+2025-05-28 01:00:55,212 - __main__ - INFO - [STEP 5] Resultats et Analyse
+2025-05-28 01:00:55,213 - __main__ - INFO - ============================================================
+2025-05-28 01:00:55,213 - __main__ - INFO - [SUCCESS] Pipeline execute avec succes !
+2025-05-28 01:00:55,213 - __main__ - INFO - [RESULTS] 50 predictions generees
+2025-05-28 01:00:55,214 - __main__ - INFO - [SUMMARY] Resume des resultats:
+2025-05-28 01:00:55,216 - __main__ - INFO -    [SALARY] Salaire moyen predit: 3200961 MAD
+2025-05-28 01:00:55,217 - __main__ - INFO -    [SALARY] Salaire min/max: 1809886 - 4454626 MAD
+2025-05-28 01:00:55,218 - __main__ - INFO -    [RISK] Employes a risque eleve de depart: 0
+2025-05-28 01:00:55,219 - __main__ - INFO -    [RISK] Employes a risque faible de depart: 40
+2025-05-28 01:00:55,227 - __main__ - INFO - [SAVE] Resultats sauvegardes: C:\Users\Mouad03\Desktop\gepec2.0 - Copy\data\pipeline_results_20250528_010055.csv
+2025-05-28 01:00:55,230 - __main__ - INFO - [PREVIEW] Apercu des predictions (5 premiers employes):
+2025-05-28 01:00:55,243 - __main__ - INFO - ============================================================
+2025-05-28 01:00:55,243 - __main__ - INFO - [COMPLETE] PIPELINE GEPEC 2.0 TERMINE AVEC SUCCES!
+2025-05-28 01:00:55,244 - __main__ - INFO - ============================================================
+2025-05-28 01:00:56,138 - src.spark_processor - INFO - Session Spark fermée
+2025-05-28 01:00:56,139 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-28 01:00:56,188 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-05-28 01:09:54,482 - __main__ - INFO - [PIPELINE] Demarrage du Pipeline HR Analytics Gepec 2.0
+2025-05-28 01:09:54,482 - __main__ - INFO - [INFO] Flux: Generation -> Kafka -> S3 -> Spark -> Predictions
+2025-05-28 01:09:54,483 - __main__ - INFO - [CHECK] Verification des modeles pre-entraines...
+2025-05-28 01:09:54,484 - __main__ - INFO - [SUCCESS] Tous les modeles pre-entraines sont disponibles
+2025-05-28 01:09:54,484 - __main__ - INFO - ============================================================
+2025-05-28 01:09:54,484 - __main__ - INFO - [STEP 1] Generation de donnees RH synthetiques
+2025-05-28 01:09:54,484 - __main__ - INFO - ============================================================
+2025-05-28 01:09:54,973 - __main__ - INFO - [SUCCESS] 50 employes synthetiques generes
+2025-05-28 01:09:54,975 - __main__ - INFO - [DATA] Colonnes: ['Employe_ID', 'Prenom', 'Nom', 'Genre', 'Age', 'Ville', 'Niveau_Etudes', 'Etablissement_Formation', 'Departement', 'Poste', 'Niveau_Seniorite', 'Annees_Experience_Totale', 'Annees_Experience_Entreprise', 'Date_Embauche', 'Salaire_Annuel_MAD', 'Competence_Principale', 'Niveau_Competence_Principale', 'Score_Performance_N-1', 'Satisfaction_Travail', 'Potentiel_Promotion', 'Risque_Depart', 'Statut_Teletravail', 'Role_Futur_Souhaite', 'Date_Estimee_Retraite', 'Date_Generation']
+2025-05-28 01:09:54,975 - __main__ - INFO - ============================================================
+2025-05-28 01:09:54,975 - __main__ - INFO - [STEP 2] Envoi des donnees vers Kafka
+2025-05-28 01:09:54,976 - __main__ - INFO - ============================================================
+2025-05-28 01:09:55,147 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-28 01:09:55,148 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-05-28 01:09:55,149 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-28 01:09:55,264 - kafka.conn - INFO - Broker version identified as 2.6.0
+2025-05-28 01:09:55,265 - kafka.conn - INFO - Set configuration api_version=(2, 6, 0) to skip auto check_version requests on startup
+2025-05-28 01:09:55,556 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-28 01:09:55,568 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-28 01:09:55,570 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-28 01:09:55,723 - __main__ - INFO - [SUCCESS] Donnees envoyees avec succes vers Kafka
+2025-05-28 01:09:57,732 - __main__ - INFO - ============================================================
+2025-05-28 01:09:57,732 - __main__ - INFO - [STEP 3] Chargement vers S3 Data Lake
+2025-05-28 01:09:57,732 - __main__ - INFO - ============================================================
+2025-05-28 01:10:00,939 - __main__ - INFO - [SUCCESS] Donnees uploadees vers S3 avec l'ID: {'csv': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_010959.csv', 'parquet': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_010959.parquet', 'metadata': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_010959_metadata.json'}
+2025-05-28 01:10:00,939 - __main__ - INFO - ============================================================
+2025-05-28 01:10:00,939 - __main__ - INFO - [STEP 4] Traitement Spark et Predictions
+2025-05-28 01:10:00,939 - __main__ - INFO - ============================================================
+2025-05-28 01:10:02,119 - src.spark_processor - INFO - [SPARK] Initialisation de Spark...
+2025-05-28 01:10:09,038 - src.spark_processor - INFO - [SUCCESS] Spark initialise - Version: 3.4.4
+2025-05-28 01:10:09,971 - src.spark_processor - INFO - [MODEL] Modele de salaire charge
+2025-05-28 01:10:10,125 - src.spark_processor - INFO - [MODEL] Modele de turnover charge
+2025-05-28 01:10:10,128 - src.spark_processor - INFO - [ENCODER] Encodeurs charges
+2025-05-28 01:10:10,128 - __main__ - INFO - [PROCESSING] Traitement des donnees avec Spark...
+2025-05-28 01:10:10,128 - src.spark_processor - INFO - Démarrage du traitement complet...
+2025-05-28 01:10:10,128 - src.spark_processor - INFO - Utilisation de Spark pour le traitement
+2025-05-28 01:10:17,414 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:10:17,414 - src.spark_processor - INFO - Application des transformations...
+2025-05-28 01:10:17,847 - src.spark_processor - INFO - Transformations appliquées
+2025-05-28 01:10:17,847 - src.spark_processor - INFO - Prédiction des salaires...
+2025-05-28 01:10:19,355 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:10:20,719 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:10:21,948 - src.spark_processor - INFO - Salaires prédits pour 50 employés
+2025-05-28 01:10:21,949 - src.spark_processor - INFO - Prédiction du risque de départ...
+2025-05-28 01:10:23,195 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:10:24,555 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:10:25,849 - src.spark_processor - INFO - Risques de départ prédits pour 50 employés
+2025-05-28 01:10:25,850 - src.spark_processor - INFO - Calcul des métriques analytics...
+2025-05-28 01:10:41,758 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:10:41,759 - src.spark_processor - INFO - Résumé du traitement:
+2025-05-28 01:10:41,760 - src.spark_processor - INFO -    - Employés traités: 50
+2025-05-28 01:10:41,760 - src.spark_processor - INFO -    - Salaire moyen prédit: 3200961 MAD
+2025-05-28 01:10:41,761 - src.spark_processor - INFO -    - Employés à risque de départ: 10
+2025-05-28 01:10:41,767 - src.spark_processor - INFO - Résultats sauvegardés: spark_predictions_20250528_011041.csv
+2025-05-28 01:10:41,768 - __main__ - INFO - ============================================================
+2025-05-28 01:10:41,768 - __main__ - INFO - [STEP 5] Resultats et Analyse
+2025-05-28 01:10:41,768 - __main__ - INFO - ============================================================
+2025-05-28 01:10:41,770 - __main__ - INFO - [SUCCESS] Pipeline execute avec succes !
+2025-05-28 01:10:41,770 - __main__ - INFO - [RESULTS] 50 predictions generees
+2025-05-28 01:10:41,770 - __main__ - INFO - [SUMMARY] Resume des resultats:
+2025-05-28 01:10:41,771 - __main__ - INFO -    [SALARY] Salaire moyen predit: 3200961 MAD
+2025-05-28 01:10:41,771 - __main__ - INFO -    [SALARY] Salaire min/max: 1809886 - 4454626 MAD
+2025-05-28 01:10:41,772 - __main__ - INFO -    [RISK] Employes a risque eleve de depart: 0
+2025-05-28 01:10:41,773 - __main__ - INFO -    [RISK] Employes a risque faible de depart: 40
+2025-05-28 01:10:41,778 - __main__ - INFO - [SAVE] Resultats sauvegardes: C:\Users\Mouad03\Desktop\gepec2.0 - Copy\data\pipeline_results_20250528_011041.csv
+2025-05-28 01:10:41,779 - __main__ - INFO - [PREVIEW] Apercu des predictions (5 premiers employes):
+2025-05-28 01:10:41,785 - __main__ - INFO - ============================================================
+2025-05-28 01:10:41,785 - __main__ - INFO - [COMPLETE] PIPELINE GEPEC 2.0 TERMINE AVEC SUCCES!
+2025-05-28 01:10:41,786 - __main__ - INFO - ============================================================
+2025-05-28 01:10:42,725 - src.spark_processor - INFO - Session Spark fermée
+2025-05-28 01:10:42,726 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-28 01:10:42,754 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-05-28 01:18:05,637 - __main__ - INFO - [PIPELINE] Demarrage du Pipeline HR Analytics Gepec 2.0
+2025-05-28 01:18:05,639 - __main__ - INFO - [INFO] Flux: Generation -> Kafka -> S3 -> Spark -> Predictions
+2025-05-28 01:18:05,639 - __main__ - INFO - [CHECK] Verification des modeles pre-entraines...
+2025-05-28 01:18:05,640 - __main__ - INFO - [SUCCESS] Tous les modeles pre-entraines sont disponibles
+2025-05-28 01:18:05,640 - __main__ - INFO - ============================================================
+2025-05-28 01:18:05,640 - __main__ - INFO - [STEP 1] Generation de donnees RH synthetiques
+2025-05-28 01:18:05,640 - __main__ - INFO - ============================================================
+2025-05-28 01:18:06,157 - __main__ - INFO - [SUCCESS] 50 employes synthetiques generes
+2025-05-28 01:18:06,157 - __main__ - INFO - [DATA] Colonnes: ['Employe_ID', 'Prenom', 'Nom', 'Genre', 'Age', 'Ville', 'Niveau_Etudes', 'Etablissement_Formation', 'Departement', 'Poste', 'Niveau_Seniorite', 'Annees_Experience_Totale', 'Annees_Experience_Entreprise', 'Date_Embauche', 'Salaire_Annuel_MAD', 'Competence_Principale', 'Niveau_Competence_Principale', 'Score_Performance_N-1', 'Satisfaction_Travail', 'Potentiel_Promotion', 'Risque_Depart', 'Statut_Teletravail', 'Role_Futur_Souhaite', 'Date_Estimee_Retraite', 'Date_Generation']
+2025-05-28 01:18:06,159 - __main__ - INFO - ============================================================
+2025-05-28 01:18:06,159 - __main__ - INFO - [STEP 2] Envoi des donnees vers Kafka
+2025-05-28 01:18:06,159 - __main__ - INFO - ============================================================
+2025-05-28 01:18:06,321 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-28 01:18:06,322 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-05-28 01:18:06,323 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-28 01:18:06,430 - kafka.conn - INFO - Broker version identified as 2.6.0
+2025-05-28 01:18:06,430 - kafka.conn - INFO - Set configuration api_version=(2, 6, 0) to skip auto check_version requests on startup
+2025-05-28 01:18:06,664 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-28 01:18:06,668 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-28 01:18:06,668 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-28 01:18:06,839 - __main__ - INFO - [SUCCESS] Donnees envoyees avec succes vers Kafka
+2025-05-28 01:18:08,842 - __main__ - INFO - ============================================================
+2025-05-28 01:18:08,842 - __main__ - INFO - [STEP 3] Chargement vers S3 Data Lake
+2025-05-28 01:18:08,843 - __main__ - INFO - ============================================================
+2025-05-28 01:18:12,859 - __main__ - INFO - [SUCCESS] Donnees uploadees vers S3 avec l'ID: {'csv': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_011810.csv', 'parquet': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_011810.parquet', 'metadata': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250528_011810_metadata.json'}
+2025-05-28 01:18:12,859 - __main__ - INFO - ============================================================
+2025-05-28 01:18:12,859 - __main__ - INFO - [STEP 4] Traitement Spark et Predictions
+2025-05-28 01:18:12,860 - __main__ - INFO - ============================================================
+2025-05-28 01:18:13,960 - src.spark_processor - INFO - [SPARK] Initialisation de Spark...
+2025-05-28 01:18:20,149 - src.spark_processor - INFO - [SUCCESS] Spark initialise - Version: 3.4.4
+2025-05-28 01:18:21,047 - src.spark_processor - INFO - [MODEL] Modele de salaire charge
+2025-05-28 01:18:21,191 - src.spark_processor - INFO - [MODEL] Modele de turnover charge
+2025-05-28 01:18:21,192 - src.spark_processor - INFO - [ENCODER] Encodeurs charges
+2025-05-28 01:18:21,193 - __main__ - INFO - [PROCESSING] Traitement des donnees avec Spark...
+2025-05-28 01:18:21,193 - src.spark_processor - INFO - Démarrage du traitement complet...
+2025-05-28 01:18:21,193 - src.spark_processor - INFO - Utilisation de Spark pour le traitement
+2025-05-28 01:18:28,731 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:18:28,732 - src.spark_processor - INFO - Application des transformations...
+2025-05-28 01:18:29,153 - src.spark_processor - INFO - Transformations appliquées
+2025-05-28 01:18:29,154 - src.spark_processor - INFO - Prédiction des salaires...
+2025-05-28 01:18:30,745 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:18:32,065 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:18:33,310 - src.spark_processor - INFO - Salaires prédits pour 50 employés
+2025-05-28 01:18:33,312 - src.spark_processor - INFO - Prédiction du risque de départ...
+2025-05-28 01:18:34,612 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:18:36,014 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-28 01:18:37,337 - src.spark_processor - INFO - Risques de départ prédits pour 50 employés
+2025-05-28 01:18:37,339 - src.spark_processor - INFO - Calcul des métriques analytics...
+2025-05-28 01:18:52,752 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-28 01:18:52,753 - src.spark_processor - INFO - Résumé du traitement:
+2025-05-28 01:18:52,753 - src.spark_processor - INFO -    - Employés traités: 50
+2025-05-28 01:18:52,754 - src.spark_processor - INFO -    - Salaire moyen prédit: 3200961 MAD
+2025-05-28 01:18:52,754 - src.spark_processor - INFO -    - Employés à risque de départ: 10
+2025-05-28 01:18:52,760 - src.spark_processor - INFO - Résultats sauvegardés: spark_predictions_20250528_011852.csv
+2025-05-28 01:18:52,760 - __main__ - INFO - ============================================================
+2025-05-28 01:18:52,761 - __main__ - INFO - [STEP 5] Resultats et Analyse
+2025-05-28 01:18:52,761 - __main__ - INFO - ============================================================
+2025-05-28 01:18:52,761 - __main__ - INFO - [SUCCESS] Pipeline execute avec succes !
+2025-05-28 01:18:52,762 - __main__ - INFO - [RESULTS] 50 predictions generees
+2025-05-28 01:18:52,762 - __main__ - INFO - [SUMMARY] Resume des resultats:
+2025-05-28 01:18:52,763 - __main__ - INFO -    [SALARY] Salaire moyen predit: 3200961 MAD
+2025-05-28 01:18:52,763 - __main__ - INFO -    [SALARY] Salaire min/max: 1809886 - 4454626 MAD
+2025-05-28 01:18:52,764 - __main__ - INFO -    [RISK] Employes a risque eleve de depart: 0
+2025-05-28 01:18:52,764 - __main__ - INFO -    [RISK] Employes a risque faible de depart: 40
+2025-05-28 01:18:52,770 - __main__ - INFO - [SAVE] Resultats sauvegardes: C:\Users\Mouad03\Desktop\gepec2.0 - Copy\data\pipeline_results_20250528_011852.csv
+2025-05-28 01:18:52,770 - __main__ - INFO - [PREVIEW] Apercu des predictions (5 premiers employes):
+2025-05-28 01:18:52,775 - __main__ - INFO - ============================================================
+2025-05-28 01:18:52,776 - __main__ - INFO - [COMPLETE] PIPELINE GEPEC 2.0 TERMINE AVEC SUCCES!
+2025-05-28 01:18:52,776 - __main__ - INFO - ============================================================
+2025-05-28 01:18:53,708 - src.spark_processor - INFO - Session Spark fermée
+2025-05-28 01:18:53,710 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-28 01:18:53,763 - py4j.clientserver - INFO - Closing down clientserver connection

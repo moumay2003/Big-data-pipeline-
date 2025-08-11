@@ -1,0 +1,142 @@
+2025-05-29 01:05:45,795 - __main__ - INFO - [PIPELINE] Demarrage du Pipeline HR Analytics Gepec 2.0
+2025-05-29 01:05:45,795 - __main__ - INFO - [INFO] Flux: Generation -> Kafka -> S3 -> Spark -> Predictions
+2025-05-29 01:05:45,796 - __main__ - INFO - [CHECK] Verification des modeles pre-entraines...
+2025-05-29 01:05:45,797 - __main__ - INFO - [SUCCESS] Tous les modeles pre-entraines sont disponibles
+2025-05-29 01:05:45,797 - __main__ - INFO - ============================================================
+2025-05-29 01:05:45,797 - __main__ - INFO - [STEP 1] Generation de donnees RH synthetiques
+2025-05-29 01:05:45,798 - __main__ - INFO - ============================================================
+2025-05-29 01:05:46,632 - __main__ - INFO - [SUCCESS] 50 employes synthetiques generes
+2025-05-29 01:05:46,632 - __main__ - INFO - [DATA] Colonnes: ['Employe_ID', 'Prenom', 'Nom', 'Genre', 'Age', 'Ville', 'Niveau_Etudes', 'Etablissement_Formation', 'Departement', 'Poste', 'Niveau_Seniorite', 'Annees_Experience_Totale', 'Annees_Experience_Entreprise', 'Date_Embauche', 'Salaire_Annuel_MAD', 'Competence_Principale', 'Niveau_Competence_Principale', 'Score_Performance_N-1', 'Satisfaction_Travail', 'Potentiel_Promotion', 'Risque_Depart', 'Statut_Teletravail', 'Role_Futur_Souhaite', 'Date_Estimee_Retraite', 'Date_Generation']
+2025-05-29 01:05:46,633 - __main__ - INFO - ============================================================
+2025-05-29 01:05:46,633 - __main__ - INFO - [STEP 2] Envoi des donnees vers Kafka
+2025-05-29 01:05:46,633 - __main__ - INFO - ============================================================
+2025-05-29 01:05:46,792 - __main__ - ERROR - [ERROR] Erreur dans le pipeline: No module named 'kafka.vendor.six.moves'
+2025-05-29 01:05:46,802 - __main__ - ERROR - [DEBUG] Details de l'erreur: Traceback (most recent call last):
+  File "c:\Users\Mouad03\Desktop\gepec2.0 - Copy\main.py", line 104, in main
+    from src.kafka_producer import KafkaDataProducer, KafkaDataConsumer
+  File "c:\Users\Mouad03\Desktop\gepec2.0 - Copy\src\kafka_producer.py", line 17, in <module>
+    from kafka import KafkaProducer
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\__init__.py", line 23, in <module>
+    from kafka.consumer import KafkaConsumer
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\consumer\__init__.py", line 3, in <module>
+    from kafka.consumer.group import KafkaConsumer
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\consumer\group.py", line 13, in <module>
+    from kafka.consumer.fetcher import Fetcher
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\consumer\fetcher.py", line 19, in <module>
+    from kafka.record import MemoryRecords
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\record\__init__.py", line 1, in <module>
+    from kafka.record.memory_records import MemoryRecords, MemoryRecordsBuilder
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\record\memory_records.py", line 27, in <module>
+    from kafka.record.legacy_records import LegacyRecordBatch, LegacyRecordBatchBuilder
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\record\legacy_records.py", line 50, in <module>
+    from kafka.codec import (
+  File "C:\Users\Mouad03\anaconda3\Lib\site-packages\kafka\codec.py", line 9, in <module>
+    from kafka.vendor.six.moves import range
+ModuleNotFoundError: No module named 'kafka.vendor.six.moves'
+
+2025-05-29 01:06:12,563 - __main__ - INFO - [PIPELINE] Demarrage du Pipeline HR Analytics Gepec 2.0
+2025-05-29 01:06:12,564 - __main__ - INFO - [INFO] Flux: Generation -> Kafka -> S3 -> Spark -> Predictions
+2025-05-29 01:06:12,564 - __main__ - INFO - [CHECK] Verification des modeles pre-entraines...
+2025-05-29 01:06:12,565 - __main__ - INFO - [SUCCESS] Tous les modeles pre-entraines sont disponibles
+2025-05-29 01:06:12,565 - __main__ - INFO - ============================================================
+2025-05-29 01:06:12,566 - __main__ - INFO - [STEP 1] Generation de donnees RH synthetiques
+2025-05-29 01:06:12,566 - __main__ - INFO - ============================================================
+2025-05-29 01:06:13,176 - __main__ - INFO - [SUCCESS] 50 employes synthetiques generes
+2025-05-29 01:06:13,176 - __main__ - INFO - [DATA] Colonnes: ['Employe_ID', 'Prenom', 'Nom', 'Genre', 'Age', 'Ville', 'Niveau_Etudes', 'Etablissement_Formation', 'Departement', 'Poste', 'Niveau_Seniorite', 'Annees_Experience_Totale', 'Annees_Experience_Entreprise', 'Date_Embauche', 'Salaire_Annuel_MAD', 'Competence_Principale', 'Niveau_Competence_Principale', 'Score_Performance_N-1', 'Satisfaction_Travail', 'Potentiel_Promotion', 'Risque_Depart', 'Statut_Teletravail', 'Role_Futur_Souhaite', 'Date_Estimee_Retraite', 'Date_Generation']
+2025-05-29 01:06:13,176 - __main__ - INFO - ============================================================
+2025-05-29 01:06:13,177 - __main__ - INFO - [STEP 2] Envoi des donnees vers Kafka
+2025-05-29 01:06:13,177 - __main__ - INFO - ============================================================
+2025-05-29 01:06:13,414 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-29 01:06:13,415 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-05-29 01:06:13,416 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-29 01:06:13,532 - kafka.conn - INFO - Broker version identified as 2.6.0
+2025-05-29 01:06:13,533 - kafka.conn - INFO - Set configuration api_version=(2, 6, 0) to skip auto check_version requests on startup
+2025-05-29 01:06:13,773 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-29 01:06:13,776 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-29 01:06:13,777 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-29 01:06:13,963 - __main__ - INFO - [SUCCESS] Donnees envoyees avec succes vers Kafka
+2025-05-29 01:06:15,968 - __main__ - INFO - [KAFKA] Recuperation des donnees depuis Kafka...
+2025-05-29 01:06:15,971 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-29 01:06:15,971 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-05-29 01:06:15,972 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-29 01:06:16,080 - kafka.conn - INFO - Broker version identified as 2.6.0
+2025-05-29 01:06:16,081 - kafka.conn - INFO - Set configuration api_version=(2, 6, 0) to skip auto check_version requests on startup
+2025-05-29 01:06:16,082 - kafka.consumer.subscription_state - INFO - Updating subscribed topics to: ('hr_analytics_topic',)
+2025-05-29 01:06:16,434 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-29 01:06:16,435 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-29 01:06:16,436 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-29 01:06:17,560 - kafka.cluster - INFO - Group coordinator for pipeline_consumer is BrokerMetadata(nodeId='coordinator-1', host='localhost', port=9092, rack=None)
+2025-05-29 01:06:17,561 - kafka.coordinator - INFO - Discovered coordinator coordinator-1 for group pipeline_consumer
+2025-05-29 01:06:17,562 - kafka.coordinator - INFO - Starting new heartbeat thread
+2025-05-29 01:06:17,562 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions set() for group pipeline_consumer
+2025-05-29 01:06:17,564 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=coordinator-1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2025-05-29 01:06:17,565 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=coordinator-1 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2025-05-29 01:06:17,676 - kafka.coordinator - INFO - (Re-)joining group pipeline_consumer
+2025-05-29 01:06:20,785 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2025-05-29 01:06:20,821 - kafka.coordinator - INFO - Successfully joined group pipeline_consumer with generation 1
+2025-05-29 01:06:20,822 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='hr_analytics_topic', partition=0)]
+2025-05-29 01:06:20,822 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='hr_analytics_topic', partition=0)} for group pipeline_consumer
+2025-05-29 01:06:20,976 - __main__ - INFO - [SUCCESS] 50 employes recuperes depuis Kafka
+2025-05-29 01:06:20,997 - kafka.coordinator - INFO - Stopping heartbeat thread
+2025-05-29 01:06:20,997 - kafka.coordinator - INFO - Leaving consumer group (pipeline_consumer).
+2025-05-29 01:06:21,020 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-29 01:06:21,021 - kafka.conn - INFO - <BrokerConnection client_id=kafka-python-2.0.6, node_id=coordinator-1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-29 01:06:21,026 - __main__ - INFO - ============================================================
+2025-05-29 01:06:21,026 - __main__ - INFO - [STEP 3] Chargement vers S3 Data Lake
+2025-05-29 01:06:21,027 - __main__ - INFO - ============================================================
+2025-05-29 01:06:27,518 - __main__ - INFO - [SUCCESS] Donnees uploadees vers S3 avec l'ID: {'csv': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250529_010623.csv', 'parquet': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250529_010623.parquet', 'metadata': 's3://hr-analytics-gepec/raw_data/hr_data_batch_20250529_010623_metadata.json'}
+2025-05-29 01:06:27,519 - __main__ - INFO - ============================================================
+2025-05-29 01:06:27,519 - __main__ - INFO - [STEP 4] Traitement Spark avec donnees depuis S3
+2025-05-29 01:06:27,520 - __main__ - INFO - ============================================================
+2025-05-29 01:06:31,682 - src.spark_processor - INFO - [SPARK] Initialisation de Spark...
+2025-05-29 01:06:39,117 - src.spark_processor - INFO - [SUCCESS] Spark initialise - Version: 3.4.4
+2025-05-29 01:06:45,073 - src.spark_processor - INFO - [MODEL] Modele de salaire charge
+2025-05-29 01:06:45,906 - src.spark_processor - INFO - [MODEL] Modele de turnover charge
+2025-05-29 01:06:45,949 - src.spark_processor - INFO - [ENCODER] Encodeurs charges
+2025-05-29 01:06:45,949 - __main__ - INFO - [SPARK] Spark va charger les donnees depuis S3...
+2025-05-29 01:06:45,949 - src.spark_processor - INFO - ============================================================
+2025-05-29 01:06:45,949 - src.spark_processor - INFO - [SPARK-S3] Démarrage du traitement depuis S3
+2025-05-29 01:06:45,950 - src.spark_processor - INFO - ============================================================
+2025-05-29 01:06:45,950 - src.spark_processor - INFO - [S3] Chargement des données depuis S3...
+2025-05-29 01:06:45,951 - src.spark_processor - ERROR - [ERROR] Erreur chargement S3: No module named 's3_handler'
+2025-05-29 01:06:45,952 - src.spark_processor - ERROR - [ERROR] Erreur traitement depuis S3: No module named 's3_handler'
+2025-05-29 01:06:45,952 - __main__ - WARNING - [FALLBACK] Erreur chargement S3: No module named 's3_handler'
+2025-05-29 01:06:45,952 - __main__ - INFO - [FALLBACK] Spark utilise les donnees en memoire...
+2025-05-29 01:06:45,952 - src.spark_processor - INFO - Démarrage du traitement complet...
+2025-05-29 01:06:45,953 - src.spark_processor - INFO - Utilisation de Spark pour le traitement
+2025-05-29 01:06:54,108 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-29 01:06:54,108 - src.spark_processor - INFO - Application des transformations...
+2025-05-29 01:06:54,544 - src.spark_processor - INFO - Transformations appliquées
+2025-05-29 01:06:54,544 - src.spark_processor - INFO - Prédiction des salaires...
+2025-05-29 01:06:56,066 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-29 01:06:57,366 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-29 01:06:58,587 - src.spark_processor - INFO - Salaires prédits pour 50 employés
+2025-05-29 01:06:58,588 - src.spark_processor - INFO - Prédiction du risque de départ...
+2025-05-29 01:06:59,838 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-29 01:07:01,100 - src.spark_processor - INFO - DataFrame converti: 50 lignes
+2025-05-29 01:07:02,300 - src.spark_processor - INFO - Risques de départ prédits pour 50 employés
+2025-05-29 01:07:02,301 - src.spark_processor - INFO - Calcul des métriques analytics...
+2025-05-29 01:07:17,294 - src.spark_processor - INFO - DataFrame Spark converti: 50 lignes
+2025-05-29 01:07:17,294 - src.spark_processor - INFO - Résumé du traitement:
+2025-05-29 01:07:17,294 - src.spark_processor - INFO -    - Employés traités: 50
+2025-05-29 01:07:17,296 - src.spark_processor - INFO -    - Salaire moyen prédit: 3270129 MAD
+2025-05-29 01:07:17,327 - src.spark_processor - INFO -    - Employés à risque de départ: 12
+2025-05-29 01:07:17,332 - src.spark_processor - INFO - Résultats sauvegardés: spark_predictions_20250529_010717.csv
+2025-05-29 01:07:17,332 - __main__ - INFO - ============================================================
+2025-05-29 01:07:17,333 - __main__ - INFO - [STEP 5] Resultats et Analyse
+2025-05-29 01:07:17,333 - __main__ - INFO - ============================================================
+2025-05-29 01:07:17,333 - __main__ - INFO - [SUCCESS] Pipeline execute avec succes !
+2025-05-29 01:07:17,334 - __main__ - INFO - [RESULTS] 50 predictions generees
+2025-05-29 01:07:17,334 - __main__ - INFO - [SUMMARY] Resume des resultats:
+2025-05-29 01:07:17,335 - __main__ - INFO -    [SALARY] Salaire moyen predit: 3270129 MAD
+2025-05-29 01:07:17,335 - __main__ - INFO -    [SALARY] Salaire min/max: 1809886 - 4454626 MAD
+2025-05-29 01:07:17,336 - __main__ - INFO -    [RISK] Employes a risque eleve de depart: 0
+2025-05-29 01:07:17,337 - __main__ - INFO -    [RISK] Employes a risque faible de depart: 38
+2025-05-29 01:07:17,343 - __main__ - INFO - [SAVE] Resultats sauvegardes: c:\Users\Mouad03\Desktop\gepec2.0 - Copy\data\pipeline_results_20250529_010717.csv
+2025-05-29 01:07:17,343 - __main__ - INFO - [PREVIEW] Apercu des predictions (5 premiers employes):
+2025-05-29 01:07:17,350 - __main__ - INFO - ============================================================
+2025-05-29 01:07:17,351 - __main__ - INFO - [COMPLETE] PIPELINE GEPEC 2.0 TERMINE AVEC SUCCES!
+2025-05-29 01:07:17,351 - __main__ - INFO - ============================================================
+2025-05-29 01:07:18,271 - src.spark_processor - INFO - Session Spark fermée
+2025-05-29 01:07:18,272 - kafka.conn - INFO - <BrokerConnection client_id=hr_analytics_producer, node_id=1 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2025-05-29 01:07:18,302 - py4j.clientserver - INFO - Closing down clientserver connection
