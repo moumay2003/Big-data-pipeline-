@@ -1,118 +1,118 @@
-# Pipeline HR Analytics Gepec 2.0 🚀
+# HR Analytics Pipeline Gepec 2.0 🚀
 
 ## 📋 Description
 
-Pipeline complet d'analyse RH utilisant les technologies Big Data et Machine Learning pour prédire les salaires et les risques de départ des employés au Maroc.
+Complete HR analytics pipeline using Big Data and Machine Learning technologies to predict salaries and turnover risks of employees 
 
 ## 🏗️ Architecture
 
 ```
-Pipeline HR Analytics
-├── 🎲 Génération de données synthétiques
-├── 🤖 Modèles ML (Régression Linéaire + Random Forest)
-├── 📡 Streaming temps réel (Apache Kafka)
-├── ☁️ Stockage cloud (AWS S3)
-├── ⚡ Traitement Big Data (Apache Spark)
-└── 📊 Analytics et prédictions
+HR Analytics Pipeline
+├── 🎲 Synthetic data generation
+├── 🤖 ML Models (Linear Regression + Random Forest)
+├── 📡 Real-time streaming (Apache Kafka)
+├── ☁️ Cloud storage (AWS S3)
+├── ⚡ Big Data processing (Apache Spark)
+└── 📊 Analytics and predictions
 ```
 
-## 🛠️ Technologies Utilisées
+## 🛠️ Technologies Used
 
-- **Python 3.10** - Langage principal
-- **Apache Spark** - Traitement Big Data
-- **Apache Kafka** - Streaming temps réel
-- **AWS S3** - Stockage cloud
+- **Python 3.10** - Main language
+- **Apache Spark** - Big Data processing
+- **Apache Kafka** - Real-time streaming
+- **AWS S3** - Cloud storage
 - **Scikit-learn** - Machine Learning
-- **Pandas/NumPy** - Manipulation de données
-- **MLflow** - Tracking des modèles
+- **Pandas/NumPy** - Data manipulation
+- **MLflow** - Model tracking
 
 ## ⚙️ Installation
 
-### 1. Prérequis
+### 1. Prerequisites
 - Python 3.10+
-- Java 8+ (pour Spark)
-- Apache Kafka (optionnel, pour le streaming)
-- Compte AWS (optionnel, pour S3)
+- Java 8+ (for Spark)
+- Apache Kafka (optional, for streaming)
+- AWS Account (optional, for S3)
 
-### 2. Installation des dépendances
+### 2. Installing dependencies
 ```bash
-# Créer l'environnement virtuel
+# Create virtual environment
 python -m venv venv_py310
 
-# Activer l'environnement (Windows)
+# Activate environment (Windows)
 venv_py310\Scripts\activate.bat
 
-# Installer les dépendances
+# Install dependencies
 pip install -r requirements.txt
 ```
 
 ### 3. Configuration
-1. Copier `.env` et ajuster les variables selon votre environnement
-2. Configurer vos credentials AWS (optionnel)
-3. Vérifier que Kafka est accessible (optionnel)
+1. Copy `.env` and adjust variables according to your environment
+2. Configure your AWS credentials (optional)
+3. Verify that Kafka is accessible (optional)
 
-## 🚀 Utilisation
+## 🚀 Usage
 
-### Démarrage Rapide (Windows)
+### Quick Start (Windows)
 ```bash
-# Lancer le script de démarrage interactif
+# Launch the interactive startup script
 start_pipeline.bat
 ```
 
-### Exécution Manuelle
+### Manual Execution
 ```bash
-# Pipeline complet
+# Complete pipeline
 python main.py
 
-# Entraînement des modèles uniquement
+# Train models only
 python -c "from src.ml_models import MLModelTrainer; trainer = MLModelTrainer(); trainer.train_all_models()"
 
-# Génération de données synthétiques
+# Generate synthetic data
 python -c "from src.data_generator import SyntheticDataGenerator; gen = SyntheticDataGenerator(); data = gen.generate_employees(100); gen.save_to_files(data)"
 ```
 
-## 📊 Modèles ML Inclus
+## 📊 Included ML Models
 
-### 1. Modèle de Prédiction de Salaire
-- **Algorithme** : Régression Linéaire
-- **Features** : Âge, Expérience, Niveau d'études, Département, etc.
-- **Objectif** : Prédire le salaire annuel en MAD
+### 1. Salary Prediction Model
+- **Algorithm**: Linear Regression
+- **Features**: Age, Experience, Education level, Department, etc.
+- **Objective**: Predict annual salary in MAD
 
-### 2. Modèle de Risque de Départ
-- **Algorithme** : Random Forest Classifier
-- **Features** : Satisfaction, Performance, Ancienneté, Âge, etc.
-- **Objectif** : Prédire le risque de départ (Faible/Élevé)
+### 2. Turnover Risk Model
+- **Algorithm**: Random Forest Classifier
+- **Features**: Satisfaction, Performance, Tenure, Age, etc.
+- **Objective**: Predict turnover risk (Low/High)
 
-## 📁 Structure du Projet
+## 📁 Project Structure
 
 ```
 gepec2.0/
-├── 📄 main.py                    # Script principal
-├── 📄 requirements.txt           # Dépendances Python
-├── 📄 .env                       # Variables d'environnement
-├── 📄 start_pipeline.bat         # Script de démarrage Windows
+├── 📄 main.py                    # Main script
+├── 📄 requirements.txt           # Python dependencies
+├── 📄 .env                       # Environment variables
+├── 📄 start_pipeline.bat         # Windows startup script
 ├── 📄 README.md                  # Documentation
-├── 📄 employees_morocco_2024.csv # Dataset principal
+├── 📄 employees_morocco_2024.csv # Main dataset
 │
 ├── 📁 config/
-│   └── 📄 settings.py            # Configuration centrale
+│   └── 📄 settings.py            # Central configuration
 │
 ├── 📁 src/
-│   ├── 📄 ml_models.py           # Modèles Machine Learning
-│   ├── 📄 data_generator.py      # Générateur de données synthétiques
-│   ├── 📄 kafka_producer.py      # Producteur Kafka
-│   ├── 📄 s3_handler.py          # Gestionnaire AWS S3
-│   └── 📄 spark_processor.py     # Processeur Apache Spark
+│   ├── 📄 ml_models.py           # Machine Learning models
+│   ├── 📄 data_generator.py      # Synthetic data generator
+│   ├── 📄 kafka_producer.py      # Kafka producer
+│   ├── 📄 s3_handler.py          # AWS S3 handler
+│   └── 📄 spark_processor.py     # Apache Spark processor
 │
-├── 📁 data/                      # Données générées
-├── 📁 models/                    # Modèles ML sauvegardés
-├── 📁 logs/                      # Fichiers de log
-└── 📁 venv_py310/               # Environnement virtuel
+├── 📁 data/                      # Generated data
+├── 📁 models/                    # Saved ML models
+├── 📁 logs/                      # Log files
+└── 📁 venv_py310/                # Virtual environment
 ```
 
-## 🔧 Configuration Avancée
+## 🔧 Advanced Configuration
 
-### Variables d'Environnement (.env)
+### Environment Variables (.env)
 ```bash
 # AWS S3
 AWS_ACCESS_KEY_ID=your_key
@@ -128,8 +128,8 @@ SPARK_DRIVER_MEMORY=4g
 SPARK_EXECUTOR_MEMORY=2g
 ```
 
-### Personnalisation des Modèles
-Modifiez les paramètres dans `config/settings.py` :
+### Model Customization
+Modify parameters in `config/settings.py`:
 ```python
 ML_CONFIG = {
     'salary_model': {
@@ -145,69 +145,65 @@ ML_CONFIG = {
 }
 ```
 
-## 📈 Fonctionnalités Principales
+## 📈 Main Features
 
-### ✅ Génération de Données Synthétiques
-- Données d'employés réalistes basées sur le contexte marocain
-- Cohérence des relations entre variables
-- Export en CSV, Excel et JSON
+### ✅ Synthetic Data Generation
+- Realistic employee data based on Moroccan context
+- Consistency of relationships between variables
+- Export to CSV, Excel and JSON
 
 ### ✅ Machine Learning
-- Entraînement automatique des modèles
-- Évaluation et métriques de performance
-- Sauvegarde et chargement des modèles
-- Visualisations des résultats
+- Automatic model training
+- Evaluation and performance metrics
+- Model saving and loading
+- Result visualizations
 
-### ✅ Streaming Temps Réel
-- Intégration Apache Kafka
-- Traitement en batch et streaming
-- Gestion des erreurs et retry automatique
+### ✅ Real-Time Streaming
+- Apache Kafka integration
+- Batch and streaming processing
+- Error handling and automatic retry
 
-### ✅ Stockage Cloud
-- Upload automatique vers AWS S3
-- Support multi-formats (CSV, Parquet, JSON)
-- Métadonnées et versioning
-- URLs pré-signées pour partage
+### ✅ Cloud Storage
+- Automatic upload to AWS S3
+- Multi-format support (CSV, Parquet, JSON)
+- Metadata and versioning
+- Pre-signed URLs for sharing
 
-### ✅ Analytics Big Data
-- Traitement distribué avec Apache Spark
-- Métriques d'analytics en temps réel
-- Prédictions sur large volume
-- Optimisations de performance
+### ✅ Big Data Analytics
+- Distributed processing with Apache Spark
+- Real-time analytics metrics
+- Large-volume predictions
+- Performance optimizations
 
-## 🔍 Monitoring et Logs
+## 🔍 Monitoring and Logs
 
-Les logs sont automatiquement générés dans le dossier `logs/` avec :
-- Horodatage des opérations
-- Métriques de performance
-- Erreurs et warnings
-- Résultats des prédictions
+Logs are automatically generated in the `logs/` folder with:
+- Operation timestamps
+- Performance metrics
+- Errors and warnings
+- Prediction results
 
 ## 🤝 Contribution
 
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📞 Support
 
-Pour toute question ou problème :
-- 📧 Email : support@gepec.ma
-- 🐛 Issues : [GitHub Issues](https://github.com/gepec/hr-analytics-2.0/issues)
-- 📖 Documentation : [Wiki](https://github.com/gepec/hr-analytics-2.0/wiki)
 
-## 📜 Licence
+## 📜 License
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is under MIT license - see the [LICENSE](LICENSE) file for more details.
 
-## 🙏 Remerciements
+## 🙏 Acknowledgments
 
-- Équipe Data Science Gepec
-- Communauté Apache Spark
-- Contributeurs open source
+- Gepec Data Science Team
+- Apache Spark Community
+- Open source contributors
 
 ---
 
-**Gepec 2.0 HR Analytics Pipeline** - Transformez vos données RH en insights actionnables ! 🚀
+**Gepec 2.0 HR Analytics Pipeline** - Transform your HR data into actionable insights! 🚀
